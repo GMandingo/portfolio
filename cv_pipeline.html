@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Building Number Extraction | Nicholas Gaman</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-nav">
+<nav>
+    <div class="nav-left">Nicholas Gaman</div>
+    <div class="nav-right">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="experience.html">Experience</a>
+    <div class="dropdown">
+        <span>Portfolio</span>
+        <div class="dropdown-content">
+        <a href="cv_pipeline.html">Computer Vision Pipeline</a>
+        <a href="robotic_arm.html">Robotic Arm Control</a>
+        <a href="slam.html">SLAM Implementation</a>
+        <a href="thesis.html">Duplication of Robotic Hand</a>
+        <a href="line_follower.html">Line Follower Car</a>
+        <a href="rover.html">Semi-Autonomous Rover</a>
+        </div>
+    </div>
+    <a href="contact.html">Get In Touch</a>
+    </div>
+</nav>
+</header>
+
+<section class="hero-row">
+  <div class="col-left">
+    <div class="hero-text">
+      <span class="project-label" style="position: static; margin-bottom: 20px; display: block;">● Computer Vision & AI</span>
+      <h1>Building Number Extraction Pipeline</h1>
+      <p style="max-width: 550px; margin-top: 20px;">
+        The objective was to develop a robust computer perception pipeline capable of identifying Curtin bulding numbers and reading the numbers from images around campus. The primary challenge lay in ensuring the system could handle diverse environmental factors, including varying lighting, textures, background and foreground obstructions, and varying perspectives.
+      </p>
+    </div>
+  </div>
+  <div class="col-right">
+    <div class="hero-image-container">
+      <img src="results.jpg" alt="CV Pipeline Detection" class="hero-img">
+    </div>
+  </div>
+</section>
+
+<div class="grid-wrapper">
+    <div class="project-row">
+      <div class="col-left">
+        <span class="project-label">● The Approach</span>
+        <div class="project-info">
+          <h3>Architecture & Design</h3>
+          <p>The task was split into four stages, in order to seperate the different steps of the pipeline:</p>
+          <ul style="margin-top: 15px; list-style: none; padding: 0;">
+            <li style="margin-bottom: 10px;"><strong>1. Bulding Number Detection:</strong> Utilised transfer learning with the YOLOv8s model which was then trained on nearly 8,000 images to identify building number bounding boxes.</li>
+            <li style="margin-bottom: 10px;"><strong>2. Digit Segmentation:</strong> Employed the lighter weight YOLOv8n (nano) model to isolate individual digits from the extracted building numbers.</li>
+            <li style="margin-bottom: 10px;"><strong>3. Digit Recognition:</strong> Built a custom Convolutional Neural Network (CNN) using TensorFlow and Keras to classify the digits.</li>
+            <li><strong>4. End-to-End Integration:</strong> Combined the prior three stages into a continuous pipeline that extracts building numbers from raw images while avoiding negative test cases.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-right">
+        <div class="project-image-container">
+          <img src="pipeline.jpg" alt="Pipeline Architecture" style="width: 100%;" class="is-static">
+          <p style="font-size: 10px; color: #888; margin-top: 10px; text-transform: uppercase;">Fig 1.0 — Pipeline Architecture</p>
+        </div>
+      </div>
+    </div>
+  
+    <div class="project-row">
+      <div class="col-left">
+        <span class="project-label">● Optimisation</span>
+        <div class="project-info">
+          <h3>Technical Problem Solving</h3>
+          <p>In order to train my custom CNN, I generated my own augmented training dataset. Since the building numbers are almost all the same font on campus (Sansa Soft Pro), I was able to use the font to generate a large set of training data by applying augmentations to the images of the numbers. The augmentations applied rotation, perspective transformations, positional transformations, Gaussian noise, contrast and brightness variations, downscaling, random cropping and drawing random lines to mimic background and foreground features around the numbers. To resolve vanishing gradient issues and prevent overfitting, I also implemented batch normalization and dropout layers within the custom CNN.</p>
+          <p style="margin-top: 15px;">In order to generate the training data for stages 1 and 2 of the task, a method called pseudo labelling was used. Since I had a large amount of unlabelled data and limited time to manually label thousands of images I used pseudo labelling. This process involved using a smaller manually labelled dataset which was used to train an initial model. This initial model, was then used to label the remaining unlaballed data which was then manually verified to avoid the propogation of errors to the final model. Now that the full dataset was labelled the final model was trained on the expanded dataset. This method allowed me to save a great deal of time while still acquiring excellent results on the final models.</p>
+        </div>
+      </div>
+      <div class="col-right">
+        <div class="project-image-container">
+          <img src="custom.jpg" alt="Data Augmentation Samples" style="width: 100%;" class="is-static">
+          <p style="font-size: 10px; color: #888; margin-top: 10px; text-transform: uppercase;">Fig 2.0 — Augmented Training Data Example (2)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<footer>
+<div class="footer-left">
+    2026 Nicholas Gaman
+</div>
+<div class="footer-right">
+    <span class="footer-email">Email - gamannicholas@gmail.com</span>
+    <a href="https://www.linkedin.com/in/nicholasgaman" target="_blank">LinkedIn</a>
+</div>
+</footer>

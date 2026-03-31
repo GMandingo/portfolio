@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SLAM Implementation | Nicholas Gaman</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-nav">
+<nav>
+    <div class="nav-left">Nicholas Gaman</div>
+    <div class="nav-right">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="experience.html">Experience</a>
+    <div class="dropdown">
+        <span>Portfolio</span>
+        <div class="dropdown-content">
+        <a href="cv_pipeline.html">Computer Vision Pipeline</a>
+        <a href="robotic_arm.html">Robotic Arm Control</a>
+        <a href="slam.html">SLAM Implementation</a>
+        <a href="thesis.html">Duplication of Robotic Hand</a>
+        <a href="line_follower.html">Line Follower Car</a>
+        <a href="rover.html">Semi-Autonomous Rover</a>
+        </div>
+    </div>
+    <a href="contact.html">Get In Touch</a>
+    </div>
+</nav>
+</header>
+
+<section class="hero-row">
+  <div class="col-left">
+    <div class="hero-text">
+      <span class="project-label" style="position: static; margin-bottom: 20px; display: block;">● Autonomous Robotics</span>
+      <h1>GMapping SLAM Case Study</h1>
+      <p style="max-width: 550px; margin-top: 20px;">
+        GMapping is an open-source laser-based SLAM (Simultaneous Localisation and Mapping) algorithm that utilizes a Rao-Blackwellized Particle Filter to create 2D occupancy grid maps. By combining LiDAR data with wheel odometry, it allows a mobile robot to track its pose and map unknown environments in real-time.
+      </p>
+    </div>
+  </div>
+  <div class="col-right">
+    <div class="hero-image-container">
+      <img src="gmapping.png" alt="TurtleBot 4 SLAM" class="hero-img is-static">
+    </div>
+  </div>
+</section>
+
+<div class="grid-wrapper">
+  <div class="project-row">
+    <div class="col-left">
+      <span class="project-label">● Implementation</span>
+      <div class="project-info">
+        <h3>TurtleBot 4 & ROS 2 Integration</h3>
+        <p>The implementation was performed on a TurtleBot 4 platform running ROS 2, utilizing the <code>slam_gmapping</code> node. The process involved subscribing to high-frequency LiDAR scans and odometry data to generate a real-time occupancy grid of the testing environment.</p>
+        <ul style="margin-top: 15px; list-style: none; padding: 0;">
+          <li><strong>Map Generation:</strong> Produced a high-fidelity 2D map used for subsequent navigation tasks, demonstrating the algorithm's ability to resolve loop closures and handle sensor noise.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-right">
+      <div class="project-image-container">
+        <img src="turtlebot.jpg" alt="Generated SLAM Map" class="is-static" style="width: 100%;">
+        <p style="font-size: 10px; color: #888; margin-top: 10px; text-transform: uppercase;">Fig 1.0 — TurtleBot4 Used in Lab</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-left">
+    2026 Nicholas Gaman
+  </div>
+  <div class="footer-right">
+    <span class="footer-email">Email - gamannicholas@gmail.com</span>
+    <a href="https://www.linkedin.com/in/nicholasgaman" target="_blank">LinkedIn</a>
+  </div>
+</footer>
+
+</body>
+</html>
