@@ -263,6 +263,12 @@ video.is-static {
   overflow: visible;
 }
 
+nav a:hover, 
+.dropdown:hover span {
+  background-color: #E0E0E0;
+  border-radius: 4px;
+}
+
 /* --- 6. MOBILE & RESPONSIVE --- */
 @media (max-width: 768px) {
   body { 
@@ -310,13 +316,17 @@ video.is-static {
   /* 3. Mobile Dropdown Fixes */
   .dropdown {
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Removed the 15px padding that was pushing it down */
   }
 
   .dropdown-content {
     position: absolute; 
+    /* Ensures it sits right at the edge of the 'Portfolio' text */
     top: 100%; 
     left: 50%;
-    right: auto; 
     transform: translateX(-50%); 
     
     display: none; 
@@ -325,22 +335,26 @@ video.is-static {
     border: 2px solid #000;
     min-width: 220px;
     z-index: 9999;
-    /* Small margin to keep it away from the nav line on mobile */
-    margin-top: 5px; 
+    
+    /* Reduced margin for a tighter look on mobile */
+    margin-top: 2px; 
+  }
+
+  /* THE IMPROVED BRIDGE */
+  /* This creates an invisible box that sits ABOVE the menu to catch the mouse */
+  .dropdown-content::before {
+    content: "";
+    position: absolute;
+    top: -15px; /* Reaches up 15px to overlap the 'Portfolio' word */
+    left: 0;
+    width: 100%;
+    height: 15px;
+    display: block;
+    background: transparent;
   }
 
   .dropdown:hover .dropdown-content {
     display: block;
-  }
-
-  .dropdown-content a {
-    text-align: center;
-    color: #111 !important;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
-  }
-
-  .dropdown-content a:last-child {
-    border-bottom: none;
   }
 }
 
